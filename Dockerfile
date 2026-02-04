@@ -10,15 +10,11 @@ COPY . .
 RUN npm run build
 
 # ---------- Production stage ----------
-# FROM nginx:alpine
+FROM nginx:alpine
 
 # Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy built React app
-COPY --from=build /app/dist /usr/share/nginx/html
-
-EXPOSE 80
 # Copy built React app
 COPY --from=build /app/dist /usr/share/nginx/html
 
