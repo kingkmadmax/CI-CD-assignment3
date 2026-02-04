@@ -29,10 +29,7 @@ Object.defineProperty(window, 'localStorage', {
     value: localStorageMock
 });
 
-describe('App Component', () => {
-    beforeEach(() => {
-        window.localStorage.clear();
-    });
+
 
     test('renders the header', () => {
         render(<App />);
