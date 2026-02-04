@@ -48,3 +48,13 @@ jobs:
         uses: docker/login-action@v3
         with:
           logout: true
+      - name: Debug secrets
+  run: |
+    echo "Docker username secret is set? -> ${DOCKER_USERNAME}"
+    if [ -z "${DOCKER_HUB_ACCESS_TOKEN}" ]; then
+      echo "Docker token is missing!"
+      exit 1
+    else
+      echo "Docker token is set."
+    fi
+
