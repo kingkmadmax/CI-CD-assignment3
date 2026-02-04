@@ -40,6 +40,12 @@ describe('App Component', () => {
         expect(headerElement).toBeInTheDocument();
     });
 
+    test('renders the header', () => {
+        render(<App />);
+        const headerElement = screen.getByText(/Notes/i, { selector: 'h1' });
+        expect(headerElement).toBeInTheDocument();
+    });
+
     test('shows empty state message when no notes exist', () => {
         render(<App />);
         const emptyMessage = screen.getByText(/Notes you add appear here/i);
