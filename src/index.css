@@ -1,0 +1,206 @@
+:root {
+  --bg-color: #202124;
+  --text-color: #e8eaed;
+  --secondary-text: #9aa0a6;
+  --card-bg: #202124;
+  --border-color: #5f6368;
+  --accent-color: #8ab4f8;
+  --danger-color: #f28b82;
+  --input-bg: #202124;
+  --shadow: 0 1px 2px 0 rgba(0,0,0,0.3), 0 2px 6px 2px rgba(0,0,0,0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header .logo-icon {
+  color: #fbbc04;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Note Input */
+.note-input-container {
+  width: 100%;
+  max-width: 600px;
+  background: var(--input-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.note-input-container.focused {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.note-input-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-input-title,
+.note-input-body {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  padding: 12px 16px;
+  outline: none;
+  width: 100%;
+}
+
+.note-input-title {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.note-input-body {
+  font-size: 0.95rem;
+  resize: none;
+  font-family: inherit;
+  min-height: 48px;
+}
+
+.note-input-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 16px 16px;
+}
+
+.add-btn {
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.add-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Notes Grid */
+.notes-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* Note Card */
+.note-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  min-height: 100px;
+}
+
+.note-card:hover {
+  box-shadow: var(--shadow);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.note-card:hover .delete-btn {
+  opacity: 1;
+}
+
+.note-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.note-body {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.note-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--secondary-text);
+  cursor: pointer;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; 
+  transition: all 0.2s;
+}
+
+/* On mobile, always show delete button */
+@media (max-width: 768px) {
+  .delete-btn {
+    opacity: 1;
+  }
+}
+
+.delete-btn:hover {
+  background: rgba(242, 139, 130, 0.2);
+  color: var(--danger-color);
+}
