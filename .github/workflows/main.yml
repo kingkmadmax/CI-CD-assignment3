@@ -31,7 +31,6 @@ jobs:
         run: npm run build || echo "No build step"
 
       - name: Login to Docker Hub
-        if: ${{ secrets.docker_username != '' && secrets.DOCKER_HUB_ACCESS_TOKEN != '' }}
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.docker_username }}
@@ -45,7 +44,6 @@ jobs:
           push: true
           tags: ${{ secrets.docker_username }}/ci-cd-assignment:latest
       - name: Logout from Docker Hub
-        if: ${{ secrets.docker_username != '' && secrets.DOCKER_HUB_ACCESS_TOKEN != '' }}
         uses: docker/login-action@v3
         with:
           logout: true
